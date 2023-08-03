@@ -1,0 +1,15 @@
+class Solution {
+    public int solution(int a, int b, int c) {
+        int answer = 0;
+
+        if ( a != b && b != c && c != a ) {
+            answer = a + b + c;
+        }else if ( a == b && b == c ) {
+            answer = (a + b + c) * ((int)Math.pow((double)a, 2) + (int)Math.pow((double)b, 2) + (int)Math.pow((double)c, 2)) * ((int)Math.pow((double)a, 3) + (int)Math.pow((double)b, 3) + (int)Math.pow((double)c, 3));
+        }else {
+            answer = (a + b + c) * ((int)Math.pow((double)a, 2) + (int)Math.pow((double)b, 2) + (int)Math.pow((double)c, 2));
+        }
+
+        return answer;
+    }
+}
