@@ -1,0 +1,18 @@
+class Solution {
+    public int solution(int a, int b) {
+        int answer = 0;
+        
+        String str = String.valueOf(a) + String.valueOf(b);
+        String str2 = String.valueOf(b) + String.valueOf(a);
+
+        a = Integer.parseInt(str);
+        b = Integer.parseInt(str2);
+
+        if ( a > b ) {
+            answer = a;
+        } else {
+            answer = b;
+        }
+        return answer;
+    }
+}
