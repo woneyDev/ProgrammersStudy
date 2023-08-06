@@ -1,0 +1,24 @@
+class Solution {
+    public int[] solution(int[] arr) {
+        int[] stk = new int[arr.length];
+        int stkCnt = 0;
+        int i = 0;
+
+        while (i < arr.length) {
+            if (stkCnt == 0 || stk[stkCnt - 1] < arr[i]) {
+                stk[stkCnt] = arr[i];
+                stkCnt++;
+                i++;
+            } else {
+                stkCnt--;
+            }
+        }
+
+        int[] answer = new int[stkCnt];
+        for (int j = 0; j < stkCnt; j++) {
+            answer[j] = stk[j];
+        }
+
+        return answer;
+    }
+}
