@@ -1,0 +1,33 @@
+class Solution {
+    public int[] solution(int l, int r) {
+        int cnt = 0;
+        int num = l;
+
+        while ( l <= r ) {
+            if ( String.valueOf(l).contains("1") || String.valueOf(l).contains("2") || String.valueOf(l).contains("3") ||
+            String.valueOf(l).contains("4") || String.valueOf(l).contains("6") || String.valueOf(l).contains("7") ||
+                    String.valueOf(l).contains("8") || String.valueOf(l).contains("9")) {
+            }else {
+                cnt ++;
+            }
+            l++;
+        }
+        int[] answer = new int[cnt];
+        cnt = 0;
+        while ( num <= r ) {
+            if ( String.valueOf(num).contains("1") || String.valueOf(num).contains("2") || String.valueOf(num).contains("3") ||
+                    String.valueOf(num).contains("4") || String.valueOf(num).contains("6") || String.valueOf(num).contains("7") ||
+                    String.valueOf(num).contains("8") || String.valueOf(num).contains("9")) {
+            }else {
+                answer[cnt] = num;
+                cnt ++;
+            }
+            num ++;
+        }
+        if ( answer.length == 0 ) {
+            answer = new int[1];
+            answer[0] = -1;
+        }
+        return answer;
+    }
+}
