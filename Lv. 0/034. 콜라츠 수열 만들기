@@ -1,0 +1,42 @@
+class Solution {
+    public int[] solution(int n) {
+        
+        int size = 1;
+        int num = n;
+
+        while ( true ) {
+            if ( n % 2 == 0 ) {
+                n /= 2;
+                size ++;
+            }else {
+                if ( n == 1 ) {
+                    break;
+                }
+                n = n * 3 + 1;
+                size ++;
+            }
+        }
+        
+        int[] answer = new int[size];
+        int cnt = 1;
+        
+        answer[0] = num;
+        
+        while ( true ) {
+            if ( num % 2 == 0 ) {
+                num /= 2;
+                answer[cnt] = num;
+                cnt ++;
+            }else {
+                if ( num == 1 ) {
+                    break;
+                }else {
+                    num = num * 3 + 1;
+                    answer[cnt] = num;
+                    cnt ++;
+                }
+            }
+        }
+        return answer;
+    }
+}
