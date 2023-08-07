@@ -1,0 +1,25 @@
+class Solution {
+    public int[] solution(String[] intStrs, int k, int s, int l) {
+        int[] answer = {};
+        int[] temp = new int[intStrs.length];
+        int str = 0;
+        int cnt = 0;
+        int num = 0;
+
+        while ( cnt < intStrs.length ) {
+            str = Integer.parseInt(intStrs[cnt].substring(s, s + l));
+            if ( str > k ) {
+                temp[num] = str;
+                num ++;
+            }
+            cnt ++;
+        }
+        answer = new int[num];
+
+        for ( int i = 0; i < num; i ++ ) {
+            answer[i] = temp[i];
+        }
+
+        return answer;
+    }
+}
