@@ -1,0 +1,13 @@
+class Solution {
+    public String solution(String my_string, int[] index_list) {
+        String answer = "";
+        int cnt = 0;
+
+        while ( cnt < index_list.length ) {
+            answer += my_string.charAt(index_list[cnt]);
+            cnt ++;
+        }
+
+        return answer;
+    }
+}
