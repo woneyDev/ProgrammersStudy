@@ -1,0 +1,55 @@
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
+
+class Solution {
+    public int solution(int a, int b, int c, int d) {
+        int answer = 0;
+        int temp = 1;
+        int chk = 0;
+        List<Integer> numLst = Arrays.asList(a, b, c, d);
+
+        Collections.sort(numLst);
+
+        for ( int i = 1; i < numLst.size(); i ++ ) {
+            if (Objects.equals(numLst.get(i - 1), numLst.get(i))) {
+                temp ++;
+            }
+            if ( temp == 3 && !Objects.equals(numLst.get(1), numLst.get(2)) ) {
+                temp --;
+            }else if ( temp == 3 && Objects.equals(numLst.get(1), numLst.get(2)) ){
+                chk = numLst.get(1);
+            }
+        }
+
+        switch ( temp ) {
+            case 4 : answer = 1111 * a;
+                break;
+            case 3 :
+                if ( Objects.equals(chk, numLst.get(3))  ) {
+                    answer = (int)Math.pow((double) 10 * numLst.get(3) + numLst.get(0), 2);
+                }else {
+                    answer = (int)Math.pow((double) 10 * numLst.get(0) + numLst.get(3), 2);
+                }
+                break;
+            case 2 :
+                if ( Objects.equals(numLst.get(0), numLst.get(1)) && Objects.equals(numLst.get(2), numLst.get(3)) ) {
+                    answer = (numLst.get(0) + numLst.get(2)) * (numLst.get(2) - numLst.get(0));
+                }else {
+                    if ( Objects.equals(numLst.get(0), numLst.get(1)) ) {
+                        answer = numLst.get(2) * numLst.get(3);
+                    }else if ( Objects.equals(numLst.get(1), numLst.get(2)) ) {
+                        answer = numLst.get(0) * numLst.get(3);
+                    }else if ( Objects.equals(numLst.get(2), numLst.get(3)) ) {
+                        answer = numLst.get(0) * numLst.get(1);
+                    }
+                }
+                break;
+            case 1 :
+                answer = numLst.get(0);
+                break;
+        }
+        return answer;
+    }
+}
