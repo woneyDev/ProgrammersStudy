@@ -1,0 +1,12 @@
+class Solution {
+    public int[] solution(int[] num_list, int n) {
+        int[] answer = new int[n];
+        int cnt = 0;
+
+        while ( cnt != n ) {
+            answer[cnt] = num_list[cnt];
+            cnt ++;
+        }
+        return answer;
+    }
+}
