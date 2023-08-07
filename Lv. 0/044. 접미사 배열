@@ -1,0 +1,17 @@
+import java.util.Arrays;
+
+class Solution {
+    public String[] solution(String my_string) {
+        String[] answer = new String[my_string.length()];
+        int max = my_string.length();
+        int cnt = 0;
+
+        while ( cnt < max ) {
+            answer[cnt] = my_string;
+            my_string = my_string.substring(1);
+            cnt ++;
+        }
+        Arrays.sort(answer);
+        return answer;
+    }
+}
