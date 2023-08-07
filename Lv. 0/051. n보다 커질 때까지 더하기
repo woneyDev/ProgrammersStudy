@@ -1,0 +1,16 @@
+class Solution {
+    public int solution(int[] numbers, int n) {
+        int answer = 0;
+        int cnt = 0;
+
+        while ( true ) {
+            answer += numbers[cnt];
+            cnt ++;
+            if ( answer > n ) {
+                break;
+            }
+        }
+
+        return answer;
+    }
+}
