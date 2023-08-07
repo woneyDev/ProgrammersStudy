@@ -1,0 +1,14 @@
+class Solution {
+    public int[] solution(int[] num_list, int n) {
+        int[] answer = new int[num_list.length - (n - 1)];
+        int cnt = (n - 1);
+        int i = 0;
+
+        while ( cnt != num_list.length ) {
+            answer[i] = num_list[cnt];
+            cnt ++;
+            i ++;
+        }
+        return answer;
+    }
+}
