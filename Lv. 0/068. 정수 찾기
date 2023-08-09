@@ -1,0 +1,16 @@
+class Solution {
+    public int solution(int[] num_list, int n) {
+        int answer = 0;
+        int cnt = 0;
+        while ( cnt < num_list.length ) {
+            if ( num_list[cnt] == n ) {
+                answer = 1;
+                break;
+            }else {
+                answer = 0;
+            }
+            cnt ++;
+        }
+        return answer;
+    }
+}
