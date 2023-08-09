@@ -1,0 +1,22 @@
+import java.util.Arrays;
+
+class Solution {
+    public String solution(String my_string, int[] indices) {
+        String answer = "";
+        int cnt = 0;
+        int i = 0;
+        Arrays.sort(indices);
+        while ( cnt < my_string.length() ) {
+            if ( cnt != indices[i] ) {
+                answer += String.valueOf(my_string.charAt(cnt));
+            }else {
+                if ( i < indices.length - 1 ) {
+                    i ++;
+                }
+            }
+            cnt ++;
+        }
+
+        return answer;
+    }
+}
