@@ -1,0 +1,16 @@
+class Solution {
+    public int[] solution(int n, int k) {
+        int[] answer = new int[n / k];
+        int cnt = 1;
+        int i = 0;
+        while ( cnt <= n ) {
+            if ( cnt % k == 0 ) {
+                answer[i] = k * (i + 1);
+                i ++;
+            }
+            cnt ++;
+        }
+
+        return answer;
+    }
+}
