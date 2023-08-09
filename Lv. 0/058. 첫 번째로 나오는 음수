@@ -1,0 +1,22 @@
+class Solution {
+    public int solution(int[] num_list) {
+        int answer = 0;
+        int cnt = 0;
+        boolean trg = false;
+
+        while ( cnt < num_list.length ) {
+            if ( num_list[cnt] < 0 ) {
+                if ( answer == 0 ) {
+                    answer = cnt;
+                    trg = !trg;
+                    break;
+                }
+            }
+            cnt ++;
+        }
+        if ( !trg ) {
+            answer = -1;
+        }
+        return answer;
+    }
+}
