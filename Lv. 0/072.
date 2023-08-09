@@ -1,0 +1,16 @@
+import java.util.ArrayList;
+
+class Solution {
+    public String[] solution(String my_string) {
+        ArrayList<String> answer = new ArrayList<>();
+        String[] splitArr = my_string.trim().split(" ");
+
+        for ( String str : splitArr ) {
+            if (!str.isEmpty() ) {
+                answer.add(str);
+            }
+        }
+
+        return answer.toArray(new String[answer.size()]);
+    }
+}
