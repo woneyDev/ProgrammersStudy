@@ -1,0 +1,14 @@
+class Solution {
+    public String solution(int q, int r, String code) {
+        String answer = "";
+        int cnt = 0;
+        while ( cnt < code.length() ) {
+            if ( cnt % q == r ) {
+                answer += String.valueOf(code.charAt(cnt));
+            }
+            cnt ++;
+        }
+
+        return answer;
+    }
+}
