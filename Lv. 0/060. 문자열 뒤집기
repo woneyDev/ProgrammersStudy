@@ -1,0 +1,17 @@
+class Solution {
+    public String solution(String my_string, int s, int e) {
+        String answer = "";
+        String prev = "";
+        String last = "";
+        String temp = "";
+
+        prev = my_string.substring(0, s);
+        last = my_string.substring(e+1);
+
+        for ( int i = e; i >= s; i -- ) {
+            temp += String.valueOf(my_string.charAt(i));
+        }
+        answer = prev + temp + last;
+        return answer;
+    }
+}
