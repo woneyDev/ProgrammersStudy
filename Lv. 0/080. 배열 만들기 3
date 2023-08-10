@@ -1,0 +1,19 @@
+import java.util.ArrayList;
+
+class Solution {
+    public int[] solution(int[] arr, int[][] intervals) {
+        ArrayList<Integer> numLst = new ArrayList<>();
+        for ( int i = 0; i < intervals.length; i ++ ) {
+            for ( int j = intervals[i][0]; j <= intervals[i][1]; j ++ ) {
+                numLst.add(arr[j]);
+            }
+        }
+        Integer[] answerArray = numLst.toArray(new Integer[numLst.size()]);
+        int[] answer = new int[answerArray.length];
+        for (int i = 0; i < answerArray.length; i++) {
+            answer[i] = answerArray[i];
+        }
+
+        return answer;
+    }
+}
