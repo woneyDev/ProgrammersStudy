@@ -1,0 +1,20 @@
+class Solution {
+    public int[] solution(int n, int[] slicer, int[] num_list) {
+        int[] answer = {};
+        int i = 0;
+        int max = 0;
+        switch ( n ) {
+            case 1 : i = 0; max = slicer[1]; answer = new int[max + 1]; break;
+            case 2 : i = slicer[0]; max = num_list.length - 1; answer = new int[max - i + 1]; break;
+            case 3 : i = slicer[0]; max = slicer[1]; answer = new int[max - i + 1]; break;
+            case 4 : i = slicer[0]; max = slicer[1]; answer = new int[Math.round((float) (max - i + 1) / 2)]; break;
+        }
+        int cnt = 0;
+        for ( int j = i; j <= max; j ++ ) {
+            answer[cnt] = num_list[j];
+            cnt ++;
+            if ( n == 4 ) j ++;
+        }
+        return answer;
+    }
+}
