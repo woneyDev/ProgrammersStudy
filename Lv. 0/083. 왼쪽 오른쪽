@@ -1,0 +1,39 @@
+import java.util.ArrayList;
+
+class Solution {
+    public String[] solution(String[] str_list) {
+        ArrayList<String> answer = new ArrayList<>();
+        String temp = "";
+        int start = 0;
+        boolean trigger = false;
+
+        for ( int i = 0; i < str_list.length; i ++ ) {
+            if ( str_list[i].equals("l") && temp.equals("") ) {
+                temp = "l";
+                trigger = true;
+            }else if ( str_list[i].equals("r") && temp.equals("") ) {
+                temp = "r";
+                if ( !trigger ) {
+                    start = i;
+                }
+                trigger = true;
+            }
+        }
+
+        if ( temp.equals("l") ) {
+            for ( int i = 0; i < str_list.length; i ++ ) {
+                if ( str_list[i].equals("l") ) break;
+                answer.add(str_list[i]);
+            }
+        }else if ( temp.equals("r") ) {
+            for ( int j = start; j < str_list.length; j ++ ) {
+                if ( j + 1 >= str_list.length ) {
+                    return answer.toArray(new String[answer.size()]);
+                }
+                answer.add((str_list[j + 1]));
+            }
+        }
+
+        return answer.toArray(new String[answer.size()]);
+    }
+}
