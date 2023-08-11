@@ -1,0 +1,14 @@
+class Solution {
+    public int[] solution(String myString) {
+        int size = 0;
+        if ( myString.endsWith("x") ) size = 1;
+        int[] answer = new int[(myString.split("x")).length + size];
+        String[] temp = myString.split("x");
+        for ( int i = 0; i < answer.length; i ++ ) {
+            if ( i < temp.length ) {
+                answer[i] = temp[i].length();
+            }
+        }
+        return answer;
+    }
+}
