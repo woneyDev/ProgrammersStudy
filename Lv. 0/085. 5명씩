@@ -1,0 +1,14 @@
+import java.util.ArrayList;
+
+class Solution {
+    public String[] solution(String[] names) {
+        ArrayList<String> answer = new ArrayList<>();
+        int cnt = 0;
+        while ( cnt < names.length ) {
+            answer.add(names[cnt]);
+            cnt += 5;
+        }
+        
+        return answer.toArray(new String[answer.size()]);
+    }
+}
