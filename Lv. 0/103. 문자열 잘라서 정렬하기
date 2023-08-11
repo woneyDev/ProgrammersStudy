@@ -1,0 +1,20 @@
+import java.util.ArrayList;
+import java.util.Collections;
+
+class Solution {
+    public String[] solution(String myString) {
+        String[] temp = myString.split("x");
+        ArrayList<String> answer = new ArrayList<>();
+        int i = 0;
+        int cnt = 0;
+        while ( cnt < temp.length ) {
+            if ( !temp[cnt].equals("") ) {
+                answer.add(temp[cnt]);
+                i ++;
+            }
+            cnt ++;
+        }
+        Collections.sort(answer);
+        return answer.toArray(new String[answer.size()]);
+    }
+}
