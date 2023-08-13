@@ -1,0 +1,31 @@
+import java.util.ArrayList;
+
+class Solution {
+    public String[] solution(String myStr) {
+        ArrayList<String> answer = new ArrayList<>();
+        String temp = "";
+        int cnt = 0;
+        for ( int i = 0; i < myStr.length(); i ++ ) {
+            if ( !String.valueOf(myStr.charAt(i)).equals("a") &&
+                 !String.valueOf(myStr.charAt(i)).equals("b") &&
+                 !String.valueOf(myStr.charAt(i)).equals("c") ) {
+                cnt ++;
+                if ( cnt != 0 ) {
+                    temp += String.valueOf(myStr.charAt(i));
+                }
+            } else {
+                if ( !"".equals(temp) ) answer.add(temp);
+                cnt = 0;
+                temp = "";
+            }
+            if ( i + 1 == myStr.length() ) {
+                if ( !"".equals(temp) ) {
+                    answer.add(temp);
+                } else {
+                    answer.add("EMPTY");
+                }
+            }
+        }
+        return answer.toArray(new String[answer.size()]);
+    }
+}
