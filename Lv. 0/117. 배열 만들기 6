@@ -1,0 +1,31 @@
+import java.util.ArrayList;
+
+class Solution {
+    public int[] solution(int[] arr) {
+        ArrayList<Integer> temp = new ArrayList<>();
+        int cnt = 0;
+        for ( int i = 0; i < arr.length; i ++ ) {
+            if ( temp.isEmpty() ) {
+                temp.add(arr[i]);
+            } else {
+                if ( !temp.isEmpty() && temp.get(cnt) == arr[i] ) {
+                    temp.remove(cnt);
+                    if ( cnt != 0 ) {
+                        cnt --;
+                    }
+                } else {
+                    temp.add(arr[i]);
+                    cnt ++;
+                }
+            }
+        }
+        if (temp.isEmpty()) {
+            temp.add(-1);
+        }
+        int[] answer = new int[temp.size()];
+        for ( int j = 0; j < temp.size(); j ++ ) {
+            answer[j] = temp.get(j);
+        }
+        return answer;
+    }
+}
