@@ -1,0 +1,26 @@
+import java.util.ArrayList;
+
+class Solution {
+    public String[] solution(String[] picture, int k) {
+        ArrayList<String> answer = new ArrayList<>();
+        int cnt = 0;
+
+        for ( int i = 0; i < picture.length; i ++ ) {
+            String temp = "";
+            int idx = 0;
+            while ( idx < picture[i].length() ) {
+                if ( cnt < k ) {
+                    temp += String.valueOf(picture[i].charAt(idx));
+                    cnt ++;
+                }else {
+                    cnt = 0;
+                    idx ++;
+                }
+            }
+            for ( int j = 0; j < k; j ++ ) {
+                answer.add(temp);
+            }
+        }
+        return answer.toArray(answer.toArray(new String[answer.size()]));
+    }
+}
