@@ -1,0 +1,33 @@
+import java.util.ArrayList;
+import java.util.Collections;
+
+class Solution {
+    public int solution(int[] rank, boolean[] attendance) {
+        int answer = 0;
+        int idx = 0;
+        int[] result = new int[3];
+        ArrayList<Integer> tmp = new ArrayList<>();
+
+        while ( idx < attendance.length ) {
+            if ( attendance[idx] ) tmp.add(rank[idx]);
+            idx ++;
+        }
+        Collections.sort(tmp);
+        int cnt = 0;
+        idx = 0;
+        while ( true ) {
+            if ( tmp.get(idx) == rank[cnt] ) {
+                result[idx] = cnt;
+                idx ++;
+                if ( idx > 2 ) {
+                    break;
+                }
+                cnt = 0;
+            } else {
+                cnt ++;
+            }
+        }
+        answer = 10000 * result[0] + 100 * result[1] + result[2];
+        return answer;
+    }
+}
