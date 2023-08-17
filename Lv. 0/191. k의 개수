@@ -1,0 +1,17 @@
+class Solution {
+    public int solution(int i, int j, int k) {
+        int answer = 0;
+        String tmp = "";
+        for ( i = i; i <= j; i ++ ) {
+            tmp = String.valueOf(i);
+            int cnt = 0;
+            while ( cnt < tmp.length() ) {
+                if ( String.valueOf(tmp.charAt(cnt)).equals(String.valueOf(k)) ) {
+                    answer ++;
+                }
+                cnt ++;
+            }
+        }
+        return answer;
+    }
+}
