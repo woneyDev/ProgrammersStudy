@@ -1,0 +1,20 @@
+class Solution {
+    public int solution(String before, String after) {
+        int answer = 0;
+        int cnt = 0;
+        String[] tmp = after.split("");
+        for ( int i = 0; i < tmp.length; i ++ ) {
+            for ( int j = 0; j < tmp.length; j ++ ) {
+                if ( String.valueOf(before.charAt(i)).equals(tmp[j]) ) {
+                    tmp[j] = "-";
+                    break;
+                }
+            }
+        }
+        for ( int k = 0; k < tmp.length; k ++ ) {
+            if ( "-".equals(tmp[k]) ) cnt ++;
+        }
+        if ( cnt == tmp.length ) answer = 1;
+        return answer;
+    }
+}
