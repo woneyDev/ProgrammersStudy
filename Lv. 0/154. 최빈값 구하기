@@ -1,0 +1,25 @@
+import java.util.HashMap;
+import java.util.Map;
+
+class Solution {
+    public int solution(int[] array) {
+        Map<Integer, Integer> countMap = new HashMap<>();
+
+        for ( int num : array ) {
+            countMap.put(num, countMap.getOrDefault(num, 0) + 1);
+        }
+
+        int maxCount = -1;
+        int mode = -1;
+
+        for ( Map.Entry<Integer, Integer> entry : countMap.entrySet() ) {
+            if ( entry.getValue() > maxCount ) {
+                maxCount = entry.getValue();
+                mode = entry.getKey();
+            } else if ( entry.getValue() == maxCount ) {
+                mode = -1;
+            }
+        }
+        return mode;
+    }
+}
