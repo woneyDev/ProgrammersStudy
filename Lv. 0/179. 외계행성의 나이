@@ -1,0 +1,10 @@
+class Solution {
+    public String solution(int age) {
+        String answer = "";
+        String tmp = String.valueOf(age);
+        for ( int i = 0; i < tmp.length(); i ++ ) {
+            answer += ((char)(tmp.charAt(i)+49));
+        }
+        return answer;
+    }
+}
