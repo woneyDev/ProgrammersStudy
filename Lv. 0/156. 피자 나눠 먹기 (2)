@@ -1,0 +1,15 @@
+class Solution {
+    public int solution(int n) {
+        int answer = 1;
+        int size = 6;
+        while ( true ) {
+            if ( size % n != 0) {
+                size += 6;
+                answer ++;
+            } else {
+                break;
+            }
+        }
+        return answer;
+    }
+}
