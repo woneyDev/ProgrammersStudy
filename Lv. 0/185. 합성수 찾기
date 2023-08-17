@@ -1,0 +1,15 @@
+class Solution {
+    public int solution(int n) {
+        int answer = 0;
+        for ( int i = 1; i <= n; i ++ ) {
+            int tmp = 0;
+            int cnt = 1;
+            while ( cnt <= i ) {
+                if ( i % cnt == 0 ) tmp ++;
+                cnt ++;
+            }
+            if ( tmp > 2 ) answer ++;
+        }
+        return answer;
+    }
+}
