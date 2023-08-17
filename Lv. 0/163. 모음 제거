@@ -1,0 +1,17 @@
+class Solution {
+    public String solution(String my_string) {
+        String answer = "";
+        for ( int i = 0; i < my_string.length(); i ++ ) {
+            if ( "a".equals(String.valueOf(my_string.charAt(i))) 
+                || "e".equals(String.valueOf(my_string.charAt(i)))
+                || "i".equals(String.valueOf(my_string.charAt(i)))
+                || "o".equals(String.valueOf(my_string.charAt(i)))
+                || "u".equals(String.valueOf(my_string.charAt(i))) ) {
+                
+            } else {
+                answer += String.valueOf(my_string.charAt(i));
+            }
+        }
+        return answer;
+    }
+}
