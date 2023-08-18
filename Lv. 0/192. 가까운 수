@@ -1,0 +1,27 @@
+class Solution {
+    public int solution(int[] array, int n) {
+        int answer = 0;
+        int tmp = 0;
+        int sep = 0;
+
+        for ( int i = 0; i < array.length; i ++ ) {
+            if ( i == 0 ) {
+                tmp = n - array[i];
+                if ( tmp < 0 ) tmp *= -1;
+                answer = array[i];
+            } else {
+                sep = n - array[i];
+                if ( sep < 0 ) sep *= -1;
+                if ( tmp > sep ) {
+                    tmp = sep;
+                    answer = array[i];
+                }else if ( tmp == sep ) {
+                    if ( answer > array[i] ) {
+                        answer = array[i];
+                    }
+                }
+            }
+        }
+        return answer;
+    }
+}
