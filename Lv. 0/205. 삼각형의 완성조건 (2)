@@ -1,0 +1,19 @@
+import java.util.Arrays;
+
+class Solution {
+    public int solution(int[] sides) {
+        int max = Arrays.stream(sides).max().getAsInt();
+        int min = Arrays.stream(sides).min().getAsInt();
+        int answer = 0;
+        int i = max - min + 1;
+
+        while ( i <= max ) {
+            answer ++;
+            i ++;
+        }
+
+        for ( int j = max + 1; j < min + max; j ++ ) answer ++;
+
+        return answer;
+    }
+}
