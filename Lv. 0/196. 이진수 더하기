@@ -1,0 +1,44 @@
+class Solution {
+    public String solution(String bin1, String bin2) {
+        String answer = "";
+
+        int[] tmp = new int[11];
+        int tmpLth = tmp.length - 1;
+        int lth1 = bin1.length() - 1;
+        int lth2 = bin2.length() - 1;
+
+        while ( tmpLth >= 0 ) {
+            if ( lth1 >= 0 ) {
+                tmp[tmpLth] += Integer.parseInt(String.valueOf(bin1.charAt(lth1)));
+                lth1--;
+            }
+            if ( lth2 >= 0 ) {
+                tmp[tmpLth] += Integer.parseInt(String.valueOf(bin2.charAt(lth2)));
+                lth2--;
+            }
+            if ( tmp[tmpLth] > 1 ) {
+                if ( tmp[tmpLth] == 2 ) {
+                    tmp[tmpLth] = 0;
+                    tmp[tmpLth - 1] = 1;
+                } else if ( tmp[tmpLth] == 3 ) {
+                    tmp[tmpLth] = 1;
+                    tmp[tmpLth - 1] = 1;
+                }
+            }
+            tmpLth --;
+        }
+        boolean trigger = false;
+        for ( int i = 0; i < tmp.length; i ++ ) {
+            if ( !trigger && tmp[i] != 0 ) {
+                trigger = true;
+            }
+            if ( trigger ) {
+                answer += tmp[i];
+            }
+        }
+        if ( answer.isEmpty() ) {
+            answer = "0";
+        }
+        return answer;
+    }
+}
