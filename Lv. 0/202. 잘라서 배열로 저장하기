@@ -1,0 +1,22 @@
+import java.util.ArrayList;
+
+class Solution {
+    public String[] solution(String my_str, int n) {
+        ArrayList<String> answer = new ArrayList<>();
+        String tmp = "";
+        int start = 0;
+        int end = n;
+        int lth = my_str.length() / n;
+        
+        if ( my_str.length() % n != 0 ) lth ++;
+
+        for ( int i = 0; i < lth; i ++ ) {
+            answer.add(my_str.substring(start, end));
+            start += n;
+            end += n;
+            
+            if ( end > my_str.length() ) end = my_str.length();
+        }
+        return answer.toArray(new String[answer.size()]);
+    }
+}
