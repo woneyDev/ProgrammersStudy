@@ -1,0 +1,15 @@
+class Solution {
+    public int solution(int chicken) {
+        int answer = chicken / 10;
+        int svc = answer + (chicken % 10);
+        
+        while ( svc >= 10 ) {
+            if ( svc >= 10 ) {
+                svc -= 10;
+                svc ++;
+                answer ++;
+            }
+        }
+        return answer;
+    }
+}
