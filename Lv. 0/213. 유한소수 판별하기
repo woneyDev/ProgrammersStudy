@@ -1,0 +1,30 @@
+class Solution {
+    public int solution(int a, int b) {
+        int answer = 1;
+
+        int idx = 2;
+        while( idx <= b ) {
+            if( a % idx == 0 && b % idx == 0 ) {
+                a /= idx;
+                b /= idx;
+                continue;
+            }
+            idx ++;
+        }
+
+        idx = 2;
+        while( idx <= b ) {
+            if( b % idx == 0 ) {
+                if( idx != 2 && idx != 5 ) {
+                    answer = 2;
+                    break;
+                }
+                b /= idx;
+                continue;
+            }
+            idx ++;
+        }
+
+        return answer;
+    }
+}
