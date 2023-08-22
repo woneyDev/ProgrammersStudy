@@ -1,0 +1,32 @@
+class Solution {
+    public int[] solution(int num, int total) {
+        int[] answer = new int[num];
+        int start = total / num;
+        int idx = start;
+        int tmp = 0;
+        int cnt = 0;
+        while ( true ) {
+            tmp += idx;
+            cnt ++;
+            idx ++;
+            if ( cnt == num ) {
+                if ( tmp > total ) {
+                    tmp = 0;
+                    start --;
+                } else if ( tmp == total ) {
+                    break;
+                } else {
+                    tmp = 0;
+                    start ++;
+                }
+                cnt = 0;
+                idx = start;
+            }
+        }
+        for ( int i = 0; i < answer.length; i ++ ) {
+            answer[i] = start;
+            start ++;
+        }
+        return answer;
+    }
+}
