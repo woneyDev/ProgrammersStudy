@@ -1,0 +1,32 @@
+class Solution {
+    public int solution(int n) {
+        int answer = 1;
+        int xThree = 1;
+        while ( answer < n ) {
+            answer ++;
+            xThree ++;
+            if ( (xThree) % 3 == 0 ) {
+                xThree ++;
+                while ( true ) {
+                    if ( xThree != 3 && String.valueOf(xThree).contains("3") ) {
+                        xThree ++;
+                    } else {
+                        break;
+                    }
+                }
+            } else {
+                while ( true ) {
+                    if ( String.valueOf(xThree).contains("3") ) {
+                        xThree ++;
+                        if ( xThree % 3 == 0 ) {
+                            xThree ++;
+                        }
+                    } else {
+                        break;
+                    }
+                }
+            }
+        }
+        return xThree;
+    }
+}
