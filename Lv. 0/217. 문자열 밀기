@@ -1,0 +1,19 @@
+class Solution {
+    public int solution(String A, String B) {
+        int answer = 0;
+        boolean trg = false;
+        while ( answer <= A.length() - 1 ) {
+            if ( !A.equals(B) ) {
+                answer ++;
+                A = A.substring(A.length() - 1) + A.substring(0, A.length() - 1);
+            } else {
+                trg = true;
+                break;
+            }
+        }
+        if ( !trg ) {
+            answer = -1;
+        }
+        return answer;
+    }
+}
