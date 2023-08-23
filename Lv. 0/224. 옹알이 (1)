@@ -1,0 +1,16 @@
+int answer = 0;
+        String[] allowStr = {"aya", "ye", "woo", "ma"};
+
+        for ( int i = 0; i < babbling.length; i ++ ) {
+            String tmp = babbling[i];
+            for ( int j = 0; j < allowStr.length; j ++ ) {
+                if ( tmp.contains(allowStr[j]) ) {
+                    tmp = tmp.replace(allowStr[j], "0");
+                }
+            }
+            tmp = tmp.replaceAll("0", "");
+            if ( tmp.isEmpty() ) {
+                answer ++;
+            }
+        }
+        return answer;
