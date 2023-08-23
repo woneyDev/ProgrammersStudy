@@ -1,0 +1,24 @@
+class Solution {
+    public int[] solution(int n, int m) {
+        int[] answer = new int[2];
+
+        int max = Math.max(n, m);
+        int min = Math.min(n, m);
+
+        answer[0] = gcd(max, min);
+
+        answer[1] = max * min / answer[0];
+
+        return answer;
+    }
+    
+    int gcd(int max, int min) {
+        int tmp;
+        while( min > 0 ) {
+            tmp = max % min;
+            max = min;
+            min = tmp;
+        }
+        return max;
+    }
+}
