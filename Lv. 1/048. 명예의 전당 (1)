@@ -1,0 +1,18 @@
+import java.util.ArrayList;
+import java.util.Collections;
+
+class Solution {
+    public int[] solution(int k, int[] score) {
+        ArrayList<Integer> tmp = new ArrayList<>();
+        int[] answer = new int[score.length];
+
+        for ( int i = 0; i < answer.length; i ++ ) {
+            tmp.add(score[i]);
+            Collections.sort(tmp, Collections.reverseOrder());
+            if ( tmp.size() <= k ) answer[i] = tmp.get(tmp.size() - 1);
+            if ( tmp.size() > k ) answer[i] = tmp.get(k - 1);
+        }
+
+        return answer;
+    }
+}
