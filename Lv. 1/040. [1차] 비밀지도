@@ -1,0 +1,45 @@
+class Solution {
+    public String[] solution(int n, int[] arr1, int[] arr2) {
+        String[] answer = new String[n];
+        boolean[][] map = new boolean[n][n];
+
+        map = mapMaker(map, arr1);
+        map = mapMaker(map, arr2);
+
+        answer = mapToString(map, answer);
+
+        return answer;
+    }
+
+    private static String[] mapToString(boolean[][] map, String[] answer) {
+        for ( int i = 0; i < map.length; i ++ ) {
+            String tmp = "";
+            for ( int j = 0; j < map[i].length; j ++ ) {
+                if ( map[i][j] ) {
+                    tmp += "#";
+                } else {
+                    tmp += " ";
+                }
+            }
+            answer[i] = tmp;
+            tmp = "";
+        }
+        return answer;
+    }
+
+    static boolean[][] mapMaker(boolean[][] map, int[] arr) {
+        for ( int i = 0; i < arr.length; i ++ ) {
+            String num = String.valueOf(arr[i]);
+            num = Integer.toBinaryString(Integer.parseInt(num));
+            int cnt = 0;
+            for ( int j = 0; j < arr.length; j ++ ) {
+                if ( cnt + num.length() < map.length ) {
+                    cnt ++;
+                } else if ( "1".equals(String.valueOf(num.charAt( j - cnt ))) ) {
+                    map[i][j] = true;
+                }
+            }
+        }
+        return map;
+    }
+}
