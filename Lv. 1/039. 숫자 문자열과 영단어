@@ -1,0 +1,42 @@
+class Solution {
+    public int solution(String s) {
+        int answer = 0;
+        String tmp = "";
+        String result = "";
+        for ( int i = 0; i < s.length(); i ++ ) {
+            int chrInt = (int) s.charAt(i);
+            if ( chrInt <= 65 ) {
+                result += String.valueOf(s.charAt(i));
+            } else {
+                tmp += String.valueOf(s.charAt(i));
+            }
+            if ( !tmp.isEmpty() ) {
+                int trg = result.length();
+                result += numChecker(tmp);
+                if ( trg != result.length() ) {
+                    tmp = "";
+                }
+            }
+        }
+        answer = Integer.parseInt(result);
+        return answer;
+    }
+    String numChecker (String tmp)  {
+        String result = "";
+        switch ( tmp ) {
+                
+            case "one" : result = "1"; tmp = ""; break;
+            case "two" : result = "2"; tmp = ""; break;
+            case "three" : result = "3"; tmp = ""; break;
+            case "four" : result = "4"; tmp = ""; break;
+            case "five" : result = "5"; tmp = ""; break;
+            case "six" : result = "6"; tmp = ""; break;
+            case "seven" : result = "7"; tmp = ""; break;
+            case "eight" : result = "8"; tmp = ""; break;
+            case "nine" : result = "9"; tmp = ""; break;
+            case "zero" : result = "0"; tmp = ""; break;
+        
+        }
+        return result;
+    }
+}
