@@ -1,0 +1,24 @@
+class Solution {
+    public String solution(int[] food) {
+        String answer = "";
+
+        for ( int i = 1; i < food.length; i ++ ) {
+            int cnt = food[i] / 2;
+            if ( cnt > 0 ) {
+                for ( int j = 0; j < cnt; j ++ ) {
+                    answer += String.valueOf(i);
+                }
+            }
+        }
+        answer += "0";
+        for ( int j = food.length - 1; j >= 0; j -- ) {
+            int cnt = food[j] / 2;
+            if ( cnt > 0 ) {
+                for ( int k = 0; k < cnt; k ++ ) {
+                    answer += String.valueOf(j);
+                }
+            }
+        }
+        return answer;
+    }
+}
