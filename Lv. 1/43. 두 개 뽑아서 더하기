@@ -1,0 +1,29 @@
+import java.util.HashSet;
+
+class Solution {
+    public int[] solution(int[] numbers) {
+        HashSet<Integer> set = new HashSet<>();
+
+        int i = 0;
+        while ( i < numbers.length ) {
+            int j = i + 1;
+            while ( j < numbers.length ) {
+                set.add(numbers[i] + numbers[j]);
+                j ++;
+            }
+            i ++;
+        }
+        int[] answer = new int[set.size()];
+
+        i = 0;
+        int cnt = 0;
+        while ( cnt < answer.length ) {
+            if ( set.contains(i) ) {
+                answer[cnt] = i;
+                cnt ++;
+            }
+            i ++;
+        }
+        return answer;
+    }
+}
