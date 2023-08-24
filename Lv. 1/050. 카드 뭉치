@@ -1,0 +1,20 @@
+import java.util.*;
+
+class Solution {
+    public String solution(String[] cards1, String[] cards2, String[] goal) {
+        String answer = "Yes";
+        ArrayList c1Lst = new ArrayList(Arrays.asList(cards1));
+        ArrayList c2Lst = new ArrayList(Arrays.asList(cards2));
+
+        for ( int i = 0; i < goal.length; i ++ ) {
+            if ( c1Lst.size() > 0 && goal[i].equals(c1Lst.get(0)) ) {
+                c1Lst.remove(0);
+            } else if ( c2Lst.size() > 0 && goal[i].equals(c2Lst.get(0)) ) {
+                c2Lst.remove(0);
+            } else {
+                answer = "No";
+            }
+        }
+        return answer;
+    }
+}
