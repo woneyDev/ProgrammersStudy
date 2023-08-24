@@ -1,0 +1,21 @@
+class Solution {
+    public int solution(String t, String p) {
+        int answer = 0;
+        int size = p.length();
+        long num = 0;
+        int cnt = 0;
+        
+        while ( true ) {
+            num = Long.parseLong(t.substring(cnt, size));
+            if ( num <= Long.parseLong(p) ) {
+                answer ++;
+            }
+            cnt ++;
+            size ++;
+            if ( size > t.length() ) {
+                break;
+            }
+        }
+        return answer;
+    }
+}
