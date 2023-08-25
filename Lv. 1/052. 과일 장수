@@ -1,0 +1,30 @@
+import java.util.Arrays;
+
+class Solution {
+    public int solution(int k, int m, int[] score) {
+        int answer = 0;
+        int chk = 0;
+        int idx = score.length - 1;
+        Arrays.sort(score);
+        int size = score.length / m;
+
+        for ( int i = idx; i >= 0; ) {
+            if ( chk == size ) break;
+
+            int[] tmp = new int[m];
+            int cnt = 0;
+            while ( cnt < m ) {
+                if ( score[idx] <= k ) {
+                    tmp[cnt] = score[idx];
+                    cnt ++;
+                }
+                idx --;
+                if ( idx < 0 ) break;
+            }
+            Arrays.sort(tmp);
+            answer += tmp[0] * m;
+            chk ++;
+        }
+        return answer;
+    }
+}
