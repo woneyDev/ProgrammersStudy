@@ -1,0 +1,42 @@
+import java.util.*;
+
+class Solution {
+    public int[] solution(int N, int[] stages) {
+        int[] answer = new int[N];
+        int cmpr = 0;
+        ArrayList<Double> perList = new ArrayList<>();
+        HashMap<Integer, Object> resultMap = new HashMap<>();
+        Arrays.sort(stages);
+        int[] tmp = stages.clone();
+        for ( int i = 0; i <= N; i ++ ) {
+            int tryCnt = 0;
+            int failCnt = 0;
+            for ( int j = 0; j < tmp.length; j ++ ) {
+                cmpr = i + 1;
+                if ( cmpr > N ) cmpr = N;
+                if ( tmp[j] >= cmpr ) tryCnt ++;
+                if ( tmp[j] == cmpr ) failCnt ++;
+            }
+            double chk = 0;
+            if ( tryCnt > 0 ) {
+                chk = (double) failCnt / tryCnt * 100;
+            }
+
+            if ( !perList.contains(chk) ) perList.add(chk);
+            resultMap.put(cmpr, chk);
+        }
+        Collections.sort(perList);
+        int cnt = 0;
+        for ( int i = perList.size() - 1; i >= 0; i -- ) {
+            for ( int j = 1; j <= N; j ++ ) {
+                double a = perList.get(i);
+                double b = (double) resultMap.get(j);
+                if ( a == b ) {
+                    answer[cnt] = j;
+                    cnt ++;
+                }
+            }
+        }
+        return answer;
+    }
+}
