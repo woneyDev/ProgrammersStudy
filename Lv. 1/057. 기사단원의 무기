@@ -1,0 +1,31 @@
+import java.util.ArrayList;
+
+class Solution {
+    public int solution(int number, int limit, int power) {
+        int answer = 0;
+        int[] knights = new int[number];
+        for ( int i = 1; i <= number; i ++ ) {
+            knights[i - 1] = divMaker(i);
+            if (knights[i - 1] > limit ) knights[i - 1] = power;
+            answer += knights[i - 1];
+        }
+        return answer;
+    }
+    
+    int divMaker(int i) {
+        ArrayList<Integer> result = new ArrayList<>();
+        double sqrt = Math.sqrt(i);
+
+        for ( int j = 1; j <= sqrt; j ++) {
+            if ( i % j == 0 ) {
+                if ( Math.pow(j, 2) == i ) {
+                    result.add(j);
+                } else {
+                    result.add(j);
+                    result.add(i / j);
+                }
+            }
+        }
+        return result.size();
+    }
+}
