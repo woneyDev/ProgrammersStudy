@@ -1,0 +1,26 @@
+class Solution {
+    public int solution(int n, int[] lost, int[] reserve) {
+        int answer              = 0;
+        int[] allStdt           = new int[n + 1];
+
+        for ( int i = 1; i <= n; i ++ ) allStdt[i] ++;
+        for ( int j = 0; j < reserve.length; j ++ ) allStdt[reserve[j]] ++;
+        for ( int k = 0; k < lost.length; k ++ ) allStdt[lost[k]] --;
+        
+        for ( int l = 2; l < allStdt.length; l ++ ) {
+            if ( allStdt[l - 1] > 1 && allStdt[l] < 1 ) {
+                allStdt[l - 1] --;
+                allStdt[l] ++;
+            }
+            if ( allStdt[l - 1] < 1 && allStdt[l] > 1 ) {
+                allStdt[l - 1] ++;
+                allStdt[l] --;
+            }
+        }
+        for ( int m = 1; m < allStdt.length; m ++ ) {
+            if ( allStdt[m] > 0 ) answer ++;
+        }
+        
+        return answer;
+    }
+}
