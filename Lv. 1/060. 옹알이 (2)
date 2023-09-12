@@ -1,0 +1,34 @@
+class Solution {
+    public int solution(String[] babbling) {
+        int answer = 0;
+
+        String[] allowStr = {"aya", "ye", "woo", "ma"};
+
+        for ( int i = 0; i < babbling.length; i ++ ) {
+            boolean trg = true;
+            String tmp = babbling[i];
+            
+            if ( tmp.contains(allowStr[0]) ) tmp = tmp.replaceAll(allowStr[0], "0");
+            if ( tmp.contains(allowStr[1]) ) tmp = tmp.replaceAll(allowStr[1], "1");
+            if ( tmp.contains(allowStr[2]) ) tmp = tmp.replaceAll(allowStr[2], "2");
+            if ( tmp.contains(allowStr[3]) ) tmp = tmp.replaceAll(allowStr[3], "3");
+
+            for ( int k = 1; k < tmp.length(); k ++ ) {
+                if ( !String.valueOf(tmp.charAt(k - 1)).equals(String.valueOf(tmp.charAt(k))) ) {
+                    if ( !trg ) break;
+                } else {
+                    trg = false;
+                }
+            }
+            if ( !trg ) continue;
+
+            tmp = tmp.replaceAll("0", "");
+            tmp = tmp.replaceAll("1", "");
+            tmp = tmp.replaceAll("2", "");
+            tmp = tmp.replaceAll("3", "");
+
+            if ( tmp.isEmpty() ) answer ++;
+        }
+        return answer;
+    }
+}
