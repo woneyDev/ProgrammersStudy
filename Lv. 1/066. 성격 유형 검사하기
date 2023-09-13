@@ -1,0 +1,52 @@
+class Solution {
+    public String solution(String[] survey, int[] choices) {
+        String answer = "";
+
+        int[][] mbti = new int[4][2];
+
+        for ( int i = 0; i < survey.length; i ++ ) {
+            if ( survey[i].contains("R") ) {
+                if ( survey[i].startsWith("R") ) {
+                    if ( choices[i] > 4 ) mbti[0][1] += choices[i] - 4;
+                    else if ( choices[i] < 4) mbti[0][0] += 4 - choices[i];
+                } else if ( survey[i].startsWith("T") ) {
+                    if ( choices[i] > 4 ) mbti[0][0] += choices[i] - 4;
+                    else if ( choices[i] < 4) mbti[0][1] += 4 - choices[i];
+                }
+            } else if ( survey[i].contains("C") ) {
+                if ( survey[i].startsWith("C") ) {
+                    if ( choices[i] > 4 ) mbti[1][1] += choices[i] - 4;
+                    else if ( choices[i] < 4) mbti[1][0] += 4 - choices[i];
+                } else if ( survey[i].startsWith("F") ) {
+                    if ( choices[i] > 4 ) mbti[1][0] += choices[i] - 4;
+                    else if ( choices[i] < 4) mbti[1][1] += 4 - choices[i];
+                }
+            } else if ( survey[i].contains("J") ) {
+                if ( survey[i].startsWith("J") ) {
+                    if ( choices[i] > 4 ) mbti[2][1] += choices[i] - 4;
+                    else if ( choices[i] < 4) mbti[2][0] += 4 - choices[i];
+                } else if ( survey[i].startsWith("M") ) {
+                    if ( choices[i] > 4 ) mbti[2][0] += choices[i] - 4;
+                    else if ( choices[i] < 4) mbti[2][1] += 4 - choices[i];
+                }
+            } else if ( survey[i].contains("A") ) {
+                if ( survey[i].startsWith("A") ) {
+                    if ( choices[i] > 4 ) mbti[3][1] += choices[i] - 4;
+                    else if ( choices[i] < 4) mbti[3][0] += 4 - choices[i];
+                } else if ( survey[i].startsWith("N") ) {
+                    if ( choices[i] > 4 ) mbti[3][0] += choices[i] - 4;
+                    else if ( choices[i] < 4) mbti[3][1] += 4 - choices[i];
+                }
+            }
+        }
+
+        for ( int j = 0; j < mbti.length; j ++ ) {
+            int tmp = mbti[j][0] - mbti[j][1];
+            if ( j == 0 ) answer += tmp >= 0 ? "R" : "T";
+            if ( j == 1 ) answer += tmp >= 0 ? "C" : "F";
+            if ( j == 2 ) answer += tmp >= 0 ? "J" : "M";
+            if ( j == 3 ) answer += tmp >= 0 ? "A" : "N";
+        }
+        return answer;
+    }
+}
