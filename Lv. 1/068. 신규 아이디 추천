@@ -1,0 +1,32 @@
+class Solution {
+    public String solution(String new_id) {
+        String answer = new_id;
+        String allowedChar = "[^a-z\\d\\-_.]*";
+
+        boolean trg = true;
+
+        if ( answer.length() >= 15 ) answer = answer.substring(0, 15);
+        answer = new_id.toLowerCase();
+        answer = answer.replaceAll(allowedChar, "");
+
+        while ( trg ) {
+            if ( answer.contains("..") ) answer = answer.replace("..", ".");
+            else trg = false;
+        }
+        if ( answer.startsWith(".") ) {
+            if ( answer.length() > 1 ) answer = answer.substring(1);
+            else answer = "";
+        }
+        if ( answer.endsWith(".") ) answer = answer.substring(0, answer.length() - 1);
+        if ( answer.isEmpty() ) answer += "a";
+        trg = true;
+
+        while ( trg ) {
+            if ( answer.length() < 3 ) answer += String.valueOf(answer.charAt(answer.length() - 1));
+            else trg = false;
+        }
+        if ( answer.length() > 15 ) answer = answer.substring(0, 15);
+        if ( answer.endsWith(".") ) answer = answer.substring(0, answer.length() - 1);
+        return answer;
+    }
+}
