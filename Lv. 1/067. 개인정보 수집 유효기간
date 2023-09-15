@@ -1,0 +1,54 @@
+import java.util.StringTokenizer;
+import java.util.ArrayList;
+
+class Solution {
+    public int[] solution(String today, String[] terms, String[] privacies) {
+        int[] answer = {};
+
+        String[] todayTmp = today.split("\\.");
+
+        int[] todayArr = new int[todayTmp.length];
+        int[][] tmp = new int[privacies.length][3];
+
+        int month = 0;
+
+        ArrayList<Integer> tmpLst = new ArrayList<>();
+
+        for ( int i = 0; i < todayTmp.length; i ++ ) todayArr[i] = Integer.parseInt(todayTmp[i]);
+
+        for ( int i = 0; i < privacies.length; i ++ ) {
+            StringTokenizer st = new StringTokenizer(privacies[i], " ");
+            todayTmp = st.nextToken().split("\\.");
+
+            int[] compareDay = new int[todayTmp.length];
+
+            for ( int j = 0; j < todayTmp.length; j ++ ) compareDay[j] = Integer.parseInt(todayTmp[j]);
+
+            String str = st.nextToken();
+
+            for ( int j = 0; j < terms.length; j ++ ) {
+                String a = terms[j].split(" ")[0];
+                if ( a.equals(str) ) {
+                    month = Integer.parseInt(terms[j].split(" ")[1]);
+                    break;
+                }
+            }
+            compareDay[1] += month;
+            tmp[i] = compareDay;
+        }
+
+        for ( int k = 0; k < tmp.length; k ++ ) {
+            tmp[k][2] --;
+            while ( tmp[k][1] > 12 ) {
+                tmp[k][0] ++;
+                tmp[k][1] = tmp[k][1] - 12;
+            }
+            if ( todayArr[0] > tmp[k][0] ) tmpLst.add(k + 1);
+            else if ( todayArr[0] >= tmp[k][0] && todayArr[1] > tmp[k][1] ) tmpLst.add(k + 1);
+            else if ( todayArr[0] >= tmp[k][0] && todayArr[1] >= tmp[k][1] && todayArr[2] > tmp[k][2] ) tmpLst.add(k  + 1);
+        }
+        answer = new int[tmpLst.size()];
+        for ( int l = 0; l < tmpLst.size(); l ++ ) answer[l] = tmpLst.get(l);
+        return answer;
+    }
+}
