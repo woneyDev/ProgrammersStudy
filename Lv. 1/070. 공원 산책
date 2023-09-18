@@ -1,0 +1,76 @@
+import java.util.StringTokenizer;
+
+class Solution {
+    public int[] solution(String[] park, String[] routes) {
+        int[] start = new int[2];
+        int idx = 0;
+        int x = 0;
+        int y = 0;
+        int xTmp = 0;
+        int yTmp = 0;
+        boolean[][] pathArr = new boolean[park.length][park[0].length()];
+        for ( int i = 0; i < park.length; i ++ ) {
+            for ( int j = 0; j < park[i].length(); j ++ ) {
+                String str = String.valueOf(park[i].charAt(j));
+                if ( "S".equals(str) || "O".equals(str) ) {
+                    pathArr[i][j] = true;
+                    if ( "S".equals(str) ) start = new int[]{i, j};
+                }
+            }
+        }
+
+        x = start[1];
+        y = start[0];
+        while ( idx < routes.length ) {
+            if ( pathArr[y][x] ) {
+                StringTokenizer st = new StringTokenizer(routes[idx], " ");
+                String str = st.nextToken();
+                int size = Integer.parseInt(st.nextToken());
+                xTmp = x;
+                yTmp = y;
+                idx ++;
+                switch ( str ) {
+                    case "E" :
+                        for ( int i = 1; i <= size; i ++ ) {
+                            x ++;
+                            if ( pathArr[y].length <= x || !pathArr[y][x] ) {
+                                x = xTmp;
+                                break;
+                            }
+                        }
+                        continue;
+                    case "W" :
+                        for ( int j = 1; j <= size; j ++ ) {
+                            x --;
+                            if ( 0 > x ||!pathArr[y][x] ) {
+                                x = xTmp;
+                                break;
+                            }
+                        }
+                        continue;
+                    case "S" :
+                        for ( int k = 1; k <= size; k ++ ) {
+                            y ++;
+                            if ( pathArr.length <= y || !pathArr[y][x] ) {
+                                y = yTmp;
+                                break;
+                            }
+                        }
+                        continue;
+                    case "N" :
+                        for ( int l = 1; l <= size; l ++ ) {
+                            y --;
+                            if ( 0 > y || !pathArr[y][x] ) {
+                                y = yTmp;
+                                break;
+                            }
+                        }
+                        continue;
+                }
+            }
+            idx ++;
+        }
+        int[] answer = new int[]{y, x};
+        return answer;
+    }
+}
