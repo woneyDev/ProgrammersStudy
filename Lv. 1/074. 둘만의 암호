@@ -1,0 +1,28 @@
+class Solution {
+    public String solution(String s, String skip, int index) {
+        String answer = "";
+        StringBuilder sb = new StringBuilder();
+        for ( int i = 0; i < s.length(); i ++ ) {
+            char ch = s.charAt(i);
+            int idx = 0;
+            while ( idx < index ) {
+                ch += 1;
+                boolean trg = true;
+                idx ++;
+                if ( ch > 'z' ) ch -= 26;
+                while ( trg ) {
+                    if ( skip.contains(String.valueOf(ch)) ) {
+                        ch += 1;
+                        if ( ch > 'z' ) ch -= 26;
+                    } else {
+                        if ( ch > 'z' ) ch -= 26;
+                        trg = false;
+                    }
+                }
+            }
+            sb.append(ch);
+        }
+        answer = sb.toString();
+        return answer;
+    }
+}
