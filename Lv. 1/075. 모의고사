@@ -1,0 +1,30 @@
+import java.util.*;
+
+class Solution {
+    public int[] solution(int[] answers) {
+        int[] answer = {};
+        ArrayList<Integer> tmp = new ArrayList<>();
+
+        int[] stdt1 = {1, 2, 3, 4, 5};
+        int[] stdt2 = {2, 1, 2, 3, 2, 4, 2, 5};
+        int[] stdt3 = {3, 3, 1, 1, 2, 2, 4, 4, 5, 5};
+
+        int[] chkArr = new int[3];
+        int max = 0;
+
+        for ( int i = 0; i < answers.length; i ++ ) {
+            if ( answers[i] == stdt1[i % stdt1.length] ) chkArr[0] ++;
+            if ( answers[i] == stdt2[i % stdt2.length] ) chkArr[1] ++;
+            if ( answers[i] == stdt3[i % stdt3.length] ) chkArr[2] ++;
+        }
+        max = Arrays.stream(chkArr).max().getAsInt();
+        for ( int j = 0; j < chkArr.length; j ++ ) {
+            if ( max == chkArr[j] ) tmp.add(j + 1);
+        }
+        answer = new int[tmp.size()];
+        for ( int k = 0; k < tmp.size(); k ++ ) {
+            answer[k] = tmp.get(k);
+        }
+        return answer;
+    }
+}
