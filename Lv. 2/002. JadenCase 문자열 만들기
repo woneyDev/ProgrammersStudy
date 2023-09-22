@@ -1,0 +1,29 @@
+class Solution {
+    public String solution(String s) {
+        String answer = "";
+        StringBuilder sb = new StringBuilder();
+        
+        boolean trg = true;
+        
+        for ( int i = 0; i < s.length(); i ++ ) {
+            String tmp = String.valueOf(s.charAt(i));
+            if ( trg && !" ".equals(tmp) ) {
+                if ( s.charAt(i) < 'A') {
+                    sb.append(tmp);
+                    trg = false;
+                } else {
+                    sb.append(tmp.toUpperCase());
+                    trg = false;
+                }
+            } else if ( " ".equals(tmp) ) {
+                sb.append(tmp);
+                trg = true;
+            } else {
+                sb.append(tmp.toLowerCase());
+            }
+        }
+        
+        answer = sb.toString();
+        return answer;
+    }
+}
